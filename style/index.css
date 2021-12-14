@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background-color: antiquewhite;
+}
+
+#carouselExampleCaptions {
+  height: 60vh;
+  padding: 1%;
+}
+
+.carousel-inner {
+  height: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  align-items: center;
+}
+
+#products {
+  /*min-height: 180vh;*/
+  padding-inline: 10%;
+  padding-bottom: 2%;
+}
+
+#products div.head-container {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#products div.head-container h1 {
+  font-size: clamp(50px, 7vw, 150px);
+  font-family: "Abril Fatface", cursive;
+}
+
+#products div.body-container {
+  height: 90%;
+  overflow-y: auto;
+}
+
+form {
+  height: 100%;
+}
+
+form div.text-center {
+  margin: 2%;
+}
+
+.card {
+  height: 100%;
+  background-color: #030303;
+}
+
+.card div.inner {
+  height: 50%;
+}
+
+.card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  margin-top: 1px;
+}
+
+.add-cart {
+  width: 100%;
+}
+
+#footer {
+  margin-bottom: -10px;
+  background-color: #000000;
+}
+
+#twitter:hover i {
+  transform: scale(1.3);
+  transition: 1.5s;
+}
+#linkedin:hover i {
+  transform: scale(1.3);
+  transition: 1.5s;
+}
+#google:hover i {
+  transform: scale(1.3);
+  transition: 1.5s;
+}
+#instagram:hover i {
+  transform: scale(1.3);
+  transition: 1.5s;
+}
+#fb:hover i {
+  transform: scale(1.3);
+  transition: 1.5s;
+}
+
+.card:hover {
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+#contactHeading {
+  font-size: clamp(50px, 7vw, 100px);
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Abril Fatface", cursive;
+  text-align: center;
+}
+
+.contact-input-tags {
+  border-radius: 45px;
+}
+
+textarea.contact-input-tags {
+  border-radius: 25px;
+}
+
+#contactBtn {
+  color: white;
+  border-radius: 45px;
+}
+
+#social-section li {
+  min-width: 50%;
+}
+@media screen and (max-width: 752px) {
+  .body-container .row {
+    padding: 0 7%;
+  }
+  .col-lg-3 {
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    max-width: 300px;
+  }
+}

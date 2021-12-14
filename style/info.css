@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.card-title {
+  font-family: "Abril Fatface", cursive;
+}
