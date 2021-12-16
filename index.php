@@ -1,7 +1,7 @@
 <?php
     session_start();
-    $con= mysqli_connect("localhost", "root", "", "getStyle");
-    if(!$con){
+    $conn= mysqli_connect("localhost", "root", "", "getStyle");
+    if(!$conn){
         echo "Connection Failed";
     }
 ?>
@@ -467,7 +467,7 @@
 
         <?php
     
-    $query= mysqli_query($con, "SELECT * FROM products");
+    $query= mysqli_query($conn, "SELECT * FROM products");
         if(mysqli_num_rows($query) > 0){
             echo "<script>
             let card;

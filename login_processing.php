@@ -38,7 +38,8 @@ $db_name="getStyle";
                 if($passhashed===sha1($pass)){
                     session_start();
                     $_SESSION["customerId"]=$row["UserId"];
-                     header("location:index.php");
+                    mysqli_stmt_close($stmt);
+                    header("location:index.php");
                 }
                 else{
                      header("location:login.php?error=wrongpassword");
@@ -48,7 +49,6 @@ $db_name="getStyle";
                 header("location:login.php?error=wronglogin");
                 exit();
             }
-            mysqli_stmt_close($stmt);
 
 
 

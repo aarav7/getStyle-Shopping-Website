@@ -1,5 +1,11 @@
-<?php 
+<?php
 session_start();
+date_default_timezone_set("Asia/Kolkata"); 
+$conn= mysqli_connect("localhost", "root", "", "getStyle");
+if(!$conn){
+    die("Connection Failed");
+}
+
 if (isset($_POST["add-cart"])){
 	if(isset($_SESSION["customerId"])){
 		if(isset($_SESSION["cart"])){
@@ -103,8 +109,87 @@ if(isset($_POST["remove_cart"])){
 		// 	<script>
 		// 	window.location.href='purchase.php';
 		// 	</script>";
-		header('location:purchase.php');
+		$orderId= "ORDS".rand(10000,99999999);
+		$customerAdd= mysqli_real_escape_string($conn, $_POST["address"]);
+		$phone= mysqli_real_escape_string($conn, $_POST["phone"]);
+		$date=date("Y-m-d H:i:s");
+		$total=0;
+		foreach($_SESSION["cart"] as $key=>$value){
+			$total= $total + $value['Quantity']*$value['Price'];
+		}
+		$payMode="COD";
+		$txnId= rand(1000000000000,9999999999999);
+		$result=mysqli_query($conn, "SELECT * FROM transactions");
+		$entries = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        while(in_array($txnId, array_column($entries, 'TxnId'))){
+            $txnId= rand(1000000000000,9999999999999);
+        }
+
+		$stmt = mysqli_prepare($conn, "INSERT INTO transactions(TxnId, UserId, OrderId, PayMode, TxnAmount, TxnDate) VALUES(?, ?, ?, ?, ?, ?)");
+        if(!$stmt){
+            header("location:../cart.php?error=stmterror");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "sissds", $txnId, $_SESSION["customerId"], $orderId, $payMode, $total, $date);
+        mysqli_stmt_execute($stmt);
+		mysqli_stmt_close($stmt);
+
+		$stmt= mysqli_prepare($conn, "INSERT INTO orders(OrderId, ProdId, Quantity, Amount, ShipAddress, ContactNo) VALUES(?, ?, ?, ?, ?, ?)");
+		mysqli_stmt_bind_param($stmt, "siidss", $orderId, $id, $Quantity, $prod_total, $customerAdd, $phone);
+        foreach($_SESSION["cart"] as $key=>$value){
+          $prod_total= $value["Quantity"]*$value["Price"];
+		  $id= $value["id"];
+		  $Quantity= $value["Quantity"];
+		  mysqli_stmt_execute($stmt);
+		}
+		mysqli_stmt_close($stmt);
+
+		$result=mysqli_query($conn, "SELECT * FROM users WHERE UserId='".$_SESSION["customerId"]."'");
+		$row1=mysqli_fetch_assoc($result);
+		$result= mysqli_query($conn, "SELECT * FROM orders WHERE OrderId='".$orderId."'");
+		$message="Order Id: ".$orderId."\nTransaction Id: ".$txnId."\nYour order which was\n";
+		while($row2=mysqli_fetch_assoc($result)){
+			$prod_info= mysqli_query($conn, "SELECT * FROM products WHERE prod_id='".$row2["ProdId"]."'");
+			$row3=mysqli_fetch_assoc($prod_info);
+			$message.=$row2["Quantity"]." ".$row3["prod_name"]."\n";
+		}
+		$message.="will be delivered to your given address within 3 days.";
+		$to=$row1["Email"];
+		$subject="Order Successful";
+		$header="From: getStyle";
+		$result= mail($to,$subject,$message,$header);
+        echo "<script>
+            setTimeout(function(){window.location.href='thankyou.php';}, 4000);
+        </script>";
+	}
+	if(isset($_POST["make_pay"]) && $_POST["radio"]=="1"){
+?>
+		<html>
+		<head>
+		<title></title>
+		</head>
+		<body>
+			<form method="post" action="PaytmKit/pgRedirect.php" name="f1">
+				<?php
+					echo '<input type="hidden" name="ORDER_ID" value="' . $_POST["ORDER_ID"]. '">';
+					echo '<input type="hidden" name="CUST_ID" value="' . $_POST["CUST_ID"]. '">';
+					echo '<input type="hidden" name="INDUSTRY_TYPE_ID" value="' . $_POST["INDUSTRY_TYPE_ID"]. '">';
+					echo '<input type="hidden" name="CHANNEL_ID" value="' . $_POST["CHANNEL_ID"]. '">';
+					echo '<input type="hidden" name="TXN_AMOUNT" value="' . $_POST["TXN_AMOUNT"]. '">';
+					$_SESSION["customerAdd"]= mysqli_real_escape_string($conn, $_POST["address"]);
+					$_SESSION["phone"]= mysqli_real_escape_string($conn, $_POST["phone"]);
+				?>
+			<script type="text/javascript">
+				document.f1.submit();
+			</script>
+
+			</form>
+		</body>
+		</html>
+<?php
+
 	}
 ?>
+
 
 

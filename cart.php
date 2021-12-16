@@ -99,13 +99,32 @@
           <span class="text-white">₹<?php echo $total; ?></span>
           <div class="payment">
             <form method="POST" action="manage_cart.php">
+              <input type="hidden" id="ORDER_ID" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo  "ORDS" . rand(10000,99999999)?>">
+              <input type="hidden" id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?php echo $_SESSION["customerId"];?>">
+              <input type="hidden" id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail">
+              <input type="hidden" id="CHANNEL_ID" tabindex="4" maxlength="12" size="12" name="CHANNEL_ID" autocomplete="off" value="WEB">
+              <input type="hidden" title="TXN_AMOUNT" tabindex="10" type="text" name="TXN_AMOUNT" value="<?php echo $total; ?>">
+            
+
             <div class="form-check">
-              <input type="radio" class="form-check-input" id="radio1" name="radio" value="1">
+              <input type="radio" class="form-check-input" id="radio1" name="radio" value="1" onclick="display_input()"> 
               <label for="radio1" class="form-check-label">UPI PAYMENT</label>
             </div>
+            <div class="form-group">
+              <input type="number" class="form-control" id="phone" name="phone" style="display:none;" placeholder="Enter your contact no.">
+            </div>
+            <div class="form-group">
+              <textarea id="address" class="form-control" name="address" rows="3" style="display:none;" placeholder="Enter your address..."></textarea>
+            </div>
             <div class="form-check">
-              <input type="radio" class="form-check-input" id="radio2" name="radio" value="2">
+              <input type="radio" class="form-check-input" id="radio2" name="radio" value="2" onclick="display_input()">
               <label for="radio2">CASH ON DELIVERY</label>
+            </div>
+            <div class="form-group">
+              <input type="number" class="form-control" id="phone2" name="phone" style="display:none;" placeholder="Enter your contact no.">
+            </div>
+            <div class="form-group">
+              <textarea id="address2" class="form-control" name="address" rows="3" style="display:none;" placeholder="Enter your address..."></textarea>
             </div>
             <div class="button-container">
               <button type="submit" name="make_pay" class="btn btn-danger">Make Payment</button> 
@@ -119,6 +138,24 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script>
+      function display_input(){
+      $radio1=document.getElementById("radio1");
+      $radio2= document.getElementById("radio2");
+      if($radio1.checked==true){
+        document.getElementById("phone2").style.display="none";
+        document.getElementById("address2").style.display="none";
+        document.getElementById("phone").style.display="inline";
+        document.getElementById("address").style.display="inline-block";
+      }
+      else{
+        document.getElementById("phone").style.display="none";
+        document.getElementById("address").style.display="none";
+        document.getElementById("phone2").style.display="inline";
+        document.getElementById("address2").style.display="inline-block";
+      }
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
      <script src="https://kit.fontawesome.com/d5f8b6c1a9.js" crossorigin="anonymous"></script>
