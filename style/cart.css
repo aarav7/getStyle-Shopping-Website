@@ -6,11 +6,11 @@
 
 body {
   height: 100vh;
-  background-color: antiquewhite;
+  background-color: var(--body-background);
 }
 
 #cart-body-head {
-  font-family: "Abril Fatface", cursive;
+  /* font-family: "Abril Fatface", cursive; */
   /* font-size: clamp(50px, 7vw, 130px); */
   text-align: center;
 }
@@ -27,22 +27,43 @@ body {
 
 .cart-body-main {
   margin-top: 10px;
-  background-color: #030303;
+  background: white;
   overflow-x: auto;
 }
 
-.row {
-  padding: 0 50px;
+/* Chrome, Safari, Edge, Opera */
+.contact::-webkit-outer-spin-button,
+.contact::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.contact {
+  -moz-appearance: textfield;
+}
+
+.button-container button:hover {
+  background: white;
+  color: black;
+  outline: 2px solid black;
 }
 
 .total-price {
   margin-top: 10px;
-  background: #030303;
 }
 
 .total-price-box {
-  background: #030303;
-  max-height: 180px;
+  min-height: 180px;
+}
+
+.total-title {
+  font-size: 14px;
+}
+
+.total {
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .total-price-box h4 {
@@ -62,4 +83,8 @@ body {
 }
 .button-container button {
   width: min(100%, 230px);
+}
+
+#address {
+  resize: none;
 }

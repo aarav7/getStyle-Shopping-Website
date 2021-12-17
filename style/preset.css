@@ -1,0 +1,77 @@
+:root {
+  --f-black: #212121;
+  --font-black: #444444;
+  --body-background: #f5f3f3;
+  --body-background2: #f6f6f6;
+  --main-btn-color: #c80b0b;
+  --error-bg: #fde5e5;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: blue;
+}
+
+input,
+button,
+textarea,
+select {
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+input,
+textarea,
+button {
+  border: 1px solid gray;
+  outline: none;
+}
+
+embed,
+iframe,
+img,
+object,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}

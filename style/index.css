@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
-  background-color: antiquewhite;
+  background-color: var(--body-background);
 }
 
 #carouselExampleCaptions {
@@ -45,6 +45,18 @@ body {
   overflow-y: auto;
 }
 
+.product-title {
+  font-size: 42px;
+  color: var(--f-black);
+  font-weight: bold;
+}
+
+.card {
+  height: 100%;
+  /* background-color: transparent; */
+  /* border: none; */
+}
+
 form {
   height: 100%;
 }
@@ -55,7 +67,13 @@ form div.text-center {
 
 .card {
   height: 100%;
-  background-color: #030303;
+  /* background-color: transparent; */
+}
+
+.card:hover {
+  background-color: white;
+  box-shadow: 0px 0px 55px -14px #ccc;
+  /* border: 2px solid rgba(128, 128, 128, 0.68); */
 }
 
 .card div.inner {
@@ -70,6 +88,10 @@ form div.text-center {
 
 .card-body {
   margin-top: 1px;
+}
+
+.card-title {
+	white-space: nowrap !important;
 }
 
 .add-cart {
@@ -102,10 +124,19 @@ form div.text-center {
   transition: 1.5s;
 }
 
-.card:hover {
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  -moz-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow: 3px 3px 5px 6px #ccc;
+.add-to-cart {
+  background: var(--f-black);
+  color: white;
+}
+
+.btn:hover {
+  color: black;
+  background: white;
+  outline: 2px solid black;
+}
+
+.form-control {
+  margin-bottom: 8px;
 }
 
 #contactHeading {
@@ -117,10 +148,6 @@ form div.text-center {
 
 .contact-input-tags {
   border-radius: 45px;
-}
-
-textarea.contact-input-tags {
-  border-radius: 25px;
 }
 
 #contactBtn {

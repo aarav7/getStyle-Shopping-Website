@@ -1,171 +1,177 @@
 <?php
- session_start();
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
-  <head> 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="style/nav.css" type="text/css" rel="stylesheet">
-    <link href="style/cart.css" type="text/css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-    <title>cart</title>
-  </head>
-  <body>
-    <nav>
-      <input type="checkbox" id="check">
-      <label for="check" class="checkbtn text-danger">
-        <i class="fas fa-bars"></i>
-      </label>
-      <label class="logo display-4 text-danger"> <i class="fas fa-shopping-bag"></i>&nbsp;getStyle</label>
-       <ul>
-                    <li>
-                        <a class="text-dark btn btn-danger" href="index.php">Home</a>
-                    </li>
-                    <li>
-                        <a class="text-dark btn btn-danger" href="#">Products</a>
-                    </li>
-                    <li>
-                        <a class="text-dark btn btn-danger" href="#">About</a>
-                    </li>
-                    <li>
-                        <a class="text-dark btn btn-danger" href="#">Contact</a>
-                    </li>
-                     <li>
-                        <?php
-                            $count=0;
-                            if(isset($_SESSION["cart"])){
-                                $count=count($_SESSION["cart"]);
-                            } 
-                        ?>
-                        <a class="text-dark btn btn-danger" type="submit" <?php if($count){echo'href="cart.php"';}?> target="#"><i
-                                class="fas fa-shopping-cart"></i><?php if($count){echo"$count";} ?>&nbsp; Cart</a>
-                    </li>
-                </ul>
-    </nav>
-    <div class="container">
-        <h1 id="cart-body-head" class="text-danger mt-2">YOUR CART</h1>
-      <div class="row">
-      <div class="cart-body-main col-lg-9 col-12">
+  <link href="style/nav.css" type="text/css" rel="stylesheet">
+  <link href="style/cart.css" type="text/css" rel="stylesheet">
+
+  <title>cart</title>
+</head>
+
+<body>
+  <nav>
+    <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <div class="logo d-flex align-items-center">
+      <img src="images/logo.svg" alt="logo" class="logo-img d-block mr-2">
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <span class="">getStyle</span>
+    </div>
+    <ul>
+      <li>
+        <a class="text-dark" href="index.php">Home</a>
+      </li>
+      <li>
+        <a class="text-dark" href="index.php#products">Products</a>
+      </li>
+      <li>
+        <a class="text-dark" href="index.php#footer">Contact</a>
+      </li>
+      <?php
+      if (isset($_SESSION["customerId"])) {
+        echo "
+                        <li>
+                            <a class='text-dark' href='logout.php'>Logout</a>
+                        </li>";
+      } else {
+        echo "
+                        <li>
+                            <a class='text-dark' href='login.php'>Login</a>
+                        </li>
+                        <li>
+                            <a class='text-dark' href='signup.php'>Signup</a>
+                        </li>";
+      }
+      ?>
+      <li>
+        <?php
+        $count = 0;
+        if (isset($_SESSION["cart"])) {
+          $count = count($_SESSION["cart"]);
+        }
+        ?>
+        <a class="text-dark" type="submit" <?php if ($count) {
+                                              echo 'href="cart.php"';
+                                            } ?>><i class="fas fa-shopping-cart"></i><?php if ($count) {
+                                                                                        echo "($count)";
+                                                                                      } ?>&nbsp; Cart</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container mt-4 pt-4">
+    <h1 id="cart-body-head" class="text-dark text-left mb-2" style="text-align:left">Your Cart</h1>
+    <div class="row">
+      <div class="cart-body-main col-lg-8 col-12">
         <table class="table">
-  <thead class="text-center">
-    <tr>
-      <th scope="col" class='text-danger'>id</th>
-      <th scope="col" class='text-danger'>Product Name</th>
-      <th scope="col" class='text-danger'>Price</th>
-      <th scope="col" class='text-danger'>Quantity</th>
-      <th scope="col" class='text-danger'>Total Price</th>
-      <th scope="col" class='text-danger'></th>
-    </tr>
-  </thead>
-  <tbody class="text-center">
-    <?php
-      if(isset($_SESSION["cart"])){
-        $total=0;
-        foreach($_SESSION['cart'] as $key=>$value){
-          $total= $total + $value['Quantity']*$value['Price'];
-          $prod_total= $value['Quantity']*$value['Price'];
-          echo"
-          <tr class='text-danger' style='border-bottom: 1px solid ;'>
+          <thead class="text-center">
+            <tr>
+              <th scope="col" class='text-dark'>id</th>
+              <th scope="col" class='text-dark'>Product Name</th>
+              <th scope="col" class='text-dark'>Price</th>
+              <th scope="col" class='text-dark'>Quantity</th>
+              <th scope="col" class='text-dark'>Total Price</th>
+              <th scope="col" class='text-dark'></th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            <?php
+            if (isset($_SESSION["cart"])) {
+              $total = 0;
+              foreach ($_SESSION['cart'] as $key => $value) {
+                $total = $total + $value['Quantity'] * $value['Price'];
+                $prod_total = $value['Quantity'] * $value['Price'];
+                echo "
+          <tr class='text-dark' style='border-bottom: 1px solid #d2d2d2;'>
             <th>$value[id]</th>
             <td>$value[product_name]</td>
             <td>₹$value[Price]</td>
             <td>
             <form method='POST' action='manage_cart.php'>
-            <input type='number' name='new_quantity' class='text-center form-control bg-dark text-danger' onchange='this.form.submit()' style='width:80px; margin-left:auto; margin-right:auto;' min=1 value='$value[Quantity]'>
+            <input type='number' name='new_quantity' class='text-center form-control text-dark bg-white' onchange='this.form.submit()' style='width:80px; margin-left:auto; margin-right:auto;' min=1 value='$value[Quantity]'>
             <input type='hidden' name='id' value='$value[id]'>
             </form>
             </td>
             <td>₹$prod_total</td>
-            <td><form method='POST' action='manage_cart.php'><button type='submit' class='btn btn-danger btn-sm' name='remove_cart'>Remove</button>
+            <td><form method='POST' action='manage_cart.php'><button type='submit' class='btn btn-dark btn-sm' name='remove_cart'>Remove</button>
             <input type='hidden' name='id' value='$value[id]'>
             </form></td>
           </tr>
           ";
-        }
-      }
-    ?>
-  </tbody>
-</table>
+              }
+            }
+            ?>
+          </tbody>
+        </table>
       </div>
-      <div class="total-price col-lg-3 col-12">
-        <div class="total-price-box p-4 m-0">
-          <h4 class="text-danger">Total:</h4>
-          <span class="text-white">₹<?php echo $total; ?></span>
+      <div class="total-price col-lg-4 col-12">
+        <div class="total-price-box p-4 pt-0 m-0">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <span class="total-title text-black mb-0 mt-auto">Total:</span>
+            <span class="total text-black">₹<?php echo $total; ?></span>
+          </div>
           <div class="payment">
             <form method="POST" action="manage_cart.php">
-              <input type="hidden" id="ORDER_ID" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo  "ORDS" . rand(10000,99999999)?>">
-              <input type="hidden" id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?php echo $_SESSION["customerId"];?>">
+              <input type="hidden" id="ORDER_ID" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo  "ORDS" . rand(10000, 99999999) ?>">
+              <input type="hidden" id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?php echo $_SESSION["customerId"]; ?>">
               <input type="hidden" id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail">
               <input type="hidden" id="CHANNEL_ID" tabindex="4" maxlength="12" size="12" name="CHANNEL_ID" autocomplete="off" value="WEB">
               <input type="hidden" title="TXN_AMOUNT" tabindex="10" type="text" name="TXN_AMOUNT" value="<?php echo $total; ?>">
-            
 
-            <div class="form-check">
-              <input type="radio" class="form-check-input" id="radio1" name="radio" value="1" onclick="display_input()"> 
-              <label for="radio1" class="form-check-label">UPI PAYMENT</label>
-            </div>
-            <div class="form-group">
-              <input type="number" class="form-control" id="phone" name="phone" style="display:none;" placeholder="Enter your contact no.">
-            </div>
-            <div class="form-group">
-              <textarea id="address" class="form-control" name="address" rows="3" style="display:none;" placeholder="Enter your address..."></textarea>
-            </div>
-            <div class="form-check">
-              <input type="radio" class="form-check-input" id="radio2" name="radio" value="2" onclick="display_input()">
-              <label for="radio2">CASH ON DELIVERY</label>
-            </div>
-            <div class="form-group">
-              <input type="number" class="form-control" id="phone2" name="phone" style="display:none;" placeholder="Enter your contact no.">
-            </div>
-            <div class="form-group">
-              <textarea id="address2" class="form-control" name="address" rows="3" style="display:none;" placeholder="Enter your address..."></textarea>
-            </div>
-            <div class="button-container">
-              <button type="submit" name="make_pay" class="btn btn-danger">Make Payment</button> 
-            </div>
+
+              <div class="form-check mb-2">
+                <input type="radio" class="form-check-input" id="radio1" name="radio" value="1" required>
+                <label for="radio1" class="form-check-label text-dark">PAYTM PAYMENT</label>
+              </div>
+              <div class="form-check mb-2">
+                <input type="radio" class="form-check-input" id="radio2" name="radio" value="2" required>
+                <label for="radio2" class="form-check-label text-dark">CASH ON DELIVERY</label>
+              </div>
+              <div class="form-group mb-2">
+                <input type="tel" class="form-control contact" id="phone" name="phone" placeholder="Enter your contact no." required pattern="[0-9]{10}" maxlength="10">
+              </div>
+              <div class="form-group mb-4">
+                <textarea id="address" class="form-control" name="address" rows="3" placeholder="Enter your address..." required></textarea>
+              </div>
+              <div class="button-container">
+                <button type="submit" name="make_pay" class="w-100 btn btn-dark">Make Payment</button>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    </div>
-    <!-- Optional JavaScript; choose one of the two! -->
+  </div>
+  <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script>
-      function display_input(){
-      $radio1=document.getElementById("radio1");
-      $radio2= document.getElementById("radio2");
-      if($radio1.checked==true){
-        document.getElementById("phone2").style.display="none";
-        document.getElementById("address2").style.display="none";
-        document.getElementById("phone").style.display="inline";
-        document.getElementById("address").style.display="inline-block";
-      }
-      else{
-        document.getElementById("phone").style.display="none";
-        document.getElementById("address").style.display="none";
-        document.getElementById("phone2").style.display="inline";
-        document.getElementById("address2").style.display="inline-block";
-      }
-      }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
-     <script src="https://kit.fontawesome.com/d5f8b6c1a9.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/d5f8b6c1a9.js" crossorigin="anonymous"></script>
 
-     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
     -->
-  </body>
+</body>
+
 </html>

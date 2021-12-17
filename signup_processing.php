@@ -3,7 +3,6 @@ $db_host="localhost";
 $db_user="root";
 $db_password="";
 $db_name="getStyle";
-
 	$conn= mysqli_connect($db_host, $db_user, $db_password, $db_name);
 	if(!$conn)
 	{
@@ -64,4 +63,3 @@ $db_name="getStyle";
             header("location:login.php?status=1");
 	   }//first else block closes
 	}//main or first if block closes
-?>

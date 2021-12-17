@@ -1,0 +1,95 @@
+.footer {
+  background-color: var(--f-black);
+  padding: 56px 140px;
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  padding: 40px calc((100vw - 1176px) / 2);
+}
+
+.flex-vcenter {
+  display: flex;
+  align-items: center;
+}
+
+.footer_top {
+  display: flex;
+  margin-bottom: 160px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer_link_title {
+  color: #a4a4a4;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.footer_links a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footerLogo {
+  margin-right: 160px;
+}
+
+.footer_links {
+  margin-right: 80px;
+}
+
+.footer_social_icons li {
+  margin-left: 32px;
+}
+
+.footer_bottom {
+  justify-content: space-between;
+}
+
+.footer_bottom_links a {
+  font-size: 10px;
+  color: #a4a4a4;
+  margin-right: 8px;
+}
+
+.footer_bottom_right {
+  font-size: 10px;
+  color: #a4a4a4;
+}
+
+#my-form textarea {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  width: 310px;
+  font-size: 16px;
+  resize: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 12px;
+}
+
+#my-form .footer-form-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+#my-form #contactBtn {
+  display: block;
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid #fff;
+  font-size: 12px;
+  border-radius: 2px;
+  padding: 8px 16px;
+}
+
+#my-form #contactBtn:hover {
+  background: white;
+  color: black;
+}
