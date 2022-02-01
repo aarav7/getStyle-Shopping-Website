@@ -20,7 +20,7 @@
 
 html {
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 body {
@@ -68,7 +68,6 @@ video {
   display: block;
   max-width: 100%;
 }
-
 
 button {
   cursor: pointer;

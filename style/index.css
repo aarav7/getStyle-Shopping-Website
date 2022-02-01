@@ -1,10 +1,5 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  padding: 0;
+  width: 100vw;
   position: relative;
   background-color: var(--body-background);
 }
@@ -91,7 +86,7 @@ form div.text-center {
 }
 
 .card-title {
-	white-space: nowrap !important;
+  white-space: nowrap !important;
 }
 
 .add-cart {

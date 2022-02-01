@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+<head> 
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,27 +28,27 @@
 
                     <div class="form-outline mb-3">
                       <label class="form-label" for="form2Example11">Full Name</label>
-                      <input type="text" id="form2Example11" class="form-control" name="name" required autofocus>
+                      <input type="text" id="fname" class="form-control" name="name" required autofocus>
                     </div>
 
                     <div class="form-outline mb-3">
                       <label class="form-label" for="form2Example22">Email</label>
-                      <input type="email" id="form2Example22" class="form-control" name="email" required>
+                      <input type="email" id="email" class="form-control" name="email" required>
                     </div>
 
                     <div class="form-outline mb-3">
                       <label class="form-label" for="form2Example33">Username</label>
-                      <input type="text" id="form2Example33" class="form-control" name="uname" required>
+                      <input type="text" id="uname" class="form-control" name="uname" required>
                     </div>
 
                     <div class="form-outline mb-3">
                       <label class="form-label" for="form2Example44">Password</label>
-                      <input type="password" id="form2Example44" class="form-control" name="pwd" required>
+                      <input type="password" id="pwd" class="form-control" name="pwd" required>
                     </div>
 
                     <div class="form-outline mb-3">
                       <label class="form-label" for="form2Example55">Repeat Password</label>
-                      <input type="password" id="form2Example55" class="form-control" name="pwdrepeat" required>
+                      <input type="password" id="pwdrepeat" class="form-control" name="pwdrepeat" required>
                     </div>
                     <button class="btn btn-dark btn-block mb-4 d-block ml-auto" style="margin-left:auto" name="submit" type="submit">Sign Up</button>
                     <div class="d-flex align-items-center justify-content-center pb-4">
