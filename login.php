@@ -20,6 +20,11 @@
         <div class="col-xl-10 mt-2">
           <div class="card rounded-3 text-black">
             <div class="row g-0">
+              <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                <div class="px-3 py-4 p-md-5 mx-md-4 d-flex">
+                  <a href="index.php"><img src="images/logo-large.svg" alt="logo"></a>
+                </div>
+              </div>
               <div class="col-lg-6">
                 <div class="card-body p-md-5 mx-md-4">
 
@@ -47,11 +52,6 @@
 
                   </form>
 
-                </div>
-              </div>
-              <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                <div class="px-3 py-4 p-md-5 mx-md-4 d-flex">
-                  <a href="index.php"><img src="images/logo-large.svg" alt="logo"></a>
                 </div>
               </div>
             </div>

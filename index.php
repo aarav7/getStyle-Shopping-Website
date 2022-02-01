@@ -7,7 +7,7 @@ if (!$conn) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
 
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@ if (!$conn) {
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <div class="logo d-flex align-items-center">
+        <div class="logo d-flex align-items-center m-1">
             <img src="images/logo.svg" alt="logo" class="logo-img d-block mr-2">
             &nbsp;
             &nbsp;
@@ -420,53 +420,53 @@ if (!$conn) {
         </div>
     </section>
     <footer class="footer" id="footer">
-        <div class="footer_top flex-vcenter">
-                <img src="images/footerLogo.svg" alt="footerLogo" class="footerLogo" />
-                <form action="manage_cart.php" method="POST" id="my-form">
-                    <div class="footer-form-title text-white">Need Help?</div>
-                    <div class="input-container mt-2">
-                        <textarea type="text" class="form-control form-control-lg contact-input-tags" id="validationCustom03" placeholder="Enter your message here . . ." rows="4" name="message"></textarea>
-                    </div>
-                    <div class="mt-2">
-                        <button id="contactBtn" class="btn btn-md" type="submit" name="sendMessage">Submit</button>
-                    </div>
-                    <div id="status"></div>
-                </form>
-                <ul class="footer_socials">
-                    <li class="footer_link_title">FOLLOW US ON</li>
-                    <div class="footer_social_icons flex-vcenter">
-                        <li>
-                            <a href="/" alt="facebook">
-                                <img src="images/fb.svg" alt="facebook" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" alt="insta">
-                                <img src="images/insta.svg" ]} alt="insta" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" alt="snap">
-                                <!-- <img src="images/snap.svg"]} alt="snap" /> -->
-                                <i class="fa fa-2x fa-twitter social-media" style="color: white" aria-hidden="true"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" alt="lin">
-                                <img src="images/lin.svg" ]} alt="lin" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" alt="yt">
-                                <img src="images/yt.svg" ]} alt="yt" />
-                            </a>
-                        </li>
-                    </div>
-                </ul>
+        <div class="footer_top d-md-flex flex-wrap justify-content-between align-items-start">
+            <img src="images/footerLogo.svg" alt="footerLogo" class="footerLogo m-4" />
+            <form action="manage_cart.php" method="POST" id="my-form" class="m-2">
+                <div class="footer-form-title text-white">Need Help?</div>
+                <div class="input-container mt-2">
+                    <textarea type="text" class="form-control form-control-lg contact-input-tags" id="validationCustom03" placeholder="Enter your message here . . ." rows="4" name="message"></textarea>
+                </div>
+                <div class="mt-2">
+                    <button id="contactBtn" class="btn btn-md" type="submit" name="sendMessage">Submit</button>
+                </div>
+                <div id="status"></div>
+            </form>
+            <ul class="footer_socials">
+                <li class="footer_link_title">FOLLOW US ON</li>
+                <div class="footer_social_icons d-flex align-items-center">
+                    <li>
+                        <a href="/" alt="facebook">
+                            <img src="images/fb.svg" alt="facebook" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" alt="insta">
+                            <img src="images/insta.svg" ]} alt="insta" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" alt="snap">
+                            <!-- <img src="images/snap.svg"]} alt="snap" /> -->
+                            <i class="fa fa-2x fa-twitter social-media" style="color: white" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" alt="lin">
+                            <img src="images/lin.svg" ]} alt="lin" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" alt="yt">
+                            <img src="images/yt.svg" ]} alt="yt" />
+                        </a>
+                    </li>
+                </div>
+            </ul>
         </div>
-        <div class="footer_bottom flex-vcenter">
-            <div class="footer_bottom_left">
-                <ul class="footer_bottom_links flex-vcenter">
+        <div class="footer_bottom d-flex flex-wrap">
+            <ul class="footer_bottom_links d-flex justify-content-center align-items-center">
+                <div class="footer_bottom_left d-flex justify-content-center align-items-center">
                     <li>
                         <a href="/" alt="footer-bottom-link">
                             Privacy Policy
@@ -487,9 +487,10 @@ if (!$conn) {
                             Disclaimer
                         </a>
                     </li>
-                </ul>
-            </div>
-            <div class="footer_bottom_right">© 2021 GETSTYLE.</div>
+                </div>
+                <li class="footer_bottom_right">© 2021 GETSTYLE.
+            </ul>
+        </div>
         </div>
     </footer>
 
