@@ -4,16 +4,16 @@
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link href="style/login.css" type="text/css" rel="stylesheet">
+  <link href="style/log-sign.css" type="text/css" rel="stylesheet">
   <title>Signup</title>
 </head>
 
 <body>
-  <section class="h-100 gradient-form" style="background-color: #eee;">
+  <section class="h-100 gradient-signup-form" style="background-color: #eee;">
     <div class="container h-100 d-flex align-items-center justify-content-center">
       <div class="row d-flex justify-content-center align-items-center w-100">
         <div class="col-xl-10 m-5 p-5">
@@ -72,16 +72,41 @@
   </section>
   <?php
   if (isset($_GET['error'])) {
+    if($_GET["error"] == "emptyfields"){
+      echo "<script>
+        alert('Please fill all fields.');
+        </script>";
+        exit();
+    }
+    if($_GET["error"] == "userexists"){
+      echo "<script>
+        alert('Entered username and email address is already registered. Please try a different username and email address.');
+        </script>";
+        exit();
+    }
+    if($_GET["error"] == "unameexists"){
+      echo "<script>
+        alert('Entered username is already registered. Please try a different username.');
+        </script>";
+        exit();
+    }
+    if($_GET["error"] == "emailexists"){
+      echo "<script>
+        alert('Entered email address is already registered. Please try a different email address.');
+        </script>";
+        exit();
+    }
     if ($_GET["error"] == "passwordsdontmatch") {
       echo "<script>
         alert('Please make sure both the passwords entered match each other.');
         </script>";
-    } else {
+    }
+    else{
       echo "<script>
         alert('This is an error from our side and we are really sorry for it. We are fixing it, try again after sometime.');
         </script>";
     }
-  }
+    }
   ?>
   <!-- Optional JavaScript; choose one of the two! -->
 

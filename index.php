@@ -435,7 +435,7 @@ if (!$conn) {
             <ul class="footer_socials">
                 <li class="footer_link_title">FOLLOW US ON</li>
                 <div class="footer_social_icons d-flex align-items-center">
-                    <li>
+                    <li class="li-fa">
                         <a href="/" alt="facebook">
                             <img src="images/fb.svg" alt="facebook" />
                         </a>
@@ -456,7 +456,7 @@ if (!$conn) {
                             <img src="images/lin.svg" ]} alt="lin" />
                         </a>
                     </li>
-                    <li>
+                    <li class="li-yt">
                         <a href="/" alt="yt">
                             <img src="images/yt.svg" ]} alt="yt" />
                         </a>

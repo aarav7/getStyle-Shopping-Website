@@ -19,15 +19,24 @@ a {
   text-decoration: none;
 }
 
-.h-100.gradient-form {
+.h-100.gradient-login-form {
   height: 100vh !important;
 }
 
-@media (min-width: 768px) {
+.h-100.gradient-signup-form {
+  height: 100% !important;
+}
+
+.resetpwd {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* @media (min-width: 768px) {
   .gradient-form {
     height: 100vh !important;
   }
-}
+} */
 @media (min-width: 769px) {
   .gradient-custom-2 {
     border-top-right-radius: 0.3rem;

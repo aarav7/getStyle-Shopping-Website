@@ -11,7 +11,7 @@ $db_name="getStyle";
 	if(isset($_POST["submit"])){
     
 		if(($_POST['name'] == "") || ($_POST['email'] == "") || ($_POST['uname'] == "")||($_POST['pwd'] == "")||($_POST['pwdrepeat'] == "")){
-		    echo "Fill all fields";
+		    header("location:signup.php?error=emptyfields");
 		}
 	    else{
 	        $name = $_POST['name'];
@@ -28,7 +28,7 @@ $db_name="getStyle";
 		    $uid=rand(100000,999999);
             $result=mysqli_query($conn, "SELECT * FROM users");
 		    $entries = mysqli_fetch_all($result, MYSQLI_ASSOC);
-            while(in_array($uid, array_column($entries, 'Username'))){
+            while(in_array($uid, array_column($entries, 'UserId'))){
                 $uid=rand(100000,999999);
             }
 
@@ -44,11 +44,30 @@ $db_name="getStyle";
             }
             mysqli_stmt_bind_param($stmt, "ss", $uname, $email);
             mysqli_stmt_execute($stmt);
-            if(mysqli_num_rows(mysqli_stmt_get_result($stmt))>0){
-                header("location:login.php?status=0");
+            $resultObj = mysqli_stmt_get_result($stmt);
+            $result = mysqli_fetch_all($resultObj, MYSQLI_ASSOC);
+            $uname_column = array_column($result, 'Username');
+            $email_column = array_column($result, 'Email');
+            
+            if(in_array($uname, $uname_column) && in_array($email, $email_column)){
+                header("location:signup.php?error=userexists");
                 exit();
             }
+            if(in_array($uname, $uname_column)){
+                header("location:signup.php?error=unameexists");
+                exit();
+            }
+            if(in_array($email, $email_column)){
+                header("location:signup.php?error=emailexists");
+                exit();
+            }
+
             mysqli_stmt_close($stmt);
+            // if(mysqli_num_rows(mysqli_stmt_get_result($stmt))>0){
+            //     header("location:signup.php?error=userexists");
+            //     mysqli_stmt_close($stmt);
+            //     exit();
+            // }
 
             //User details are ready to be entered into the database
 
@@ -59,7 +78,12 @@ $db_name="getStyle";
                 exit();
             }
             mysqli_stmt_bind_param($stmt, "issss", $uid, $name, $email, $uname, $pass);
-            mysqli_stmt_execute($stmt);
-            header("location:login.php?status=1");
+            if(mysqli_stmt_execute($stmt)){
+                header("location:login.php?status=1");
+            }
+            else{
+                header("location:signup.php?error=stmterror3");
+            }
+            
 	   }//first else block closes
 	}//main or first if block closes

@@ -87,6 +87,8 @@ form div.text-center {
 
 .card-title {
   white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .add-cart {

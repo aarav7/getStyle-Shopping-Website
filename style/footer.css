@@ -5,7 +5,7 @@
 
 .footer_top {
   margin: 0 30px;
-  margin-bottom: 160px;
+  /* margin-bottom: 160px; */
 }
 
 .footer_link_title {
@@ -31,12 +31,29 @@
   margin-right: 80px;
 }
 
+.footer_socials {
+  padding-left: 0;
+}
+
+.footer_social_icons li.li-fa {
+  margin-left: 0;
+}
+
 .footer_social_icons li {
   margin-left: 32px;
 }
 
-.footer_bottom {
+/* .footer_bottom {
   justify-content: space-between;
+} */
+
+.footer_bottom_links {
+  padding-left: 0;
+  width: 100%;
+}
+
+.footer_bottom_links li {
+  text-align: center;
 }
 
 .footer_bottom_links a {
@@ -84,12 +101,13 @@
 
 @media screen and (max-width: 940px) {
   .footer_link_title {
-    text-align: left;
+    text-align: right;
   }
-  .footer_social_icons li {
+
+  /*.footer_social_icons li {
     margin-right: 32px;
     margin-left: 0;
-  }
+  } */
   .footerLogo {
     padding: 20px;
   }
@@ -98,6 +116,19 @@
   }
 }
 
+@media screen and (max-width: 876px) {
+  .footer_socials {
+    width: 100%;
+  }
+
+  .footer_link_title {
+    text-align: center;
+  }
+
+  .footer_social_icons {
+    justify-content: center;
+  }
+}
 
 @media screen and (max-width: 768px) {
   #my-form textarea {
