@@ -33,8 +33,8 @@
                   <form action="otp_processing.php" method="POST">
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Enter your one time password</label>
-                      <input type="number" id="form2Example11" class="form-control" placeholder="One Time Password" name="otp" min="10000" max="99999" required autofocus />
+                      <label class="form-label" for="otp">Enter your one time password</label>
+                      <input type="number" id="otp" class="form-control" placeholder="One Time Password" name="otp" min="10000" max="99999" required autofocus />
                     </div>
 
                     <div class="text-right">

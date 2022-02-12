@@ -33,8 +33,8 @@
                   <form action="verification_processing.php" method="POST">
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Enter your registered email address or username</label>
-                      <input type="text" id="form2Example11" class="form-control" placeholder="Username or email address" name="name" required autofocus />
+                      <label class="form-label" for="name">Enter your registered email address or username</label>
+                      <input type="text" id="name" class="form-control" placeholder="Username or email address" name="name" required autofocus />
                     </div>
 
                     <div class="text-right">

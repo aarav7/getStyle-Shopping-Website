@@ -125,7 +125,7 @@ session_start();
             <span class="total text-black">₹<?php echo $total; ?></span>
           </div>
           <div class="payment">
-            <form method="POST" action="manage_cart.php">
+            <form method="POST" action="manage_cart.php" onsubmit="return validate();">
               <input type="hidden" id="ORDER_ID" tabindex="1" maxlength="20" size="20" name="ORDER_ID" autocomplete="off" value="<?php echo  "ORDS" . rand(10000, 99999999) ?>">
               <input type="hidden" id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?php echo $_SESSION["customerId"]; ?>">
               <input type="hidden" id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12" name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail">
@@ -143,19 +143,53 @@ session_start();
               </div>
               <div class="form-group mb-2">
                 <input type="tel" class="form-control contact" id="phone" name="phone" placeholder="Enter your contact no." required pattern="[0-9]{10}" maxlength="10">
+                <span class="invalid" style="color:red; font-size:small; display:none">Your phone number must contain only 10 digits.</span>
               </div>
               <div class="form-group mb-4">
                 <textarea id="address" class="form-control" name="address" rows="3" placeholder="Enter your address..." required></textarea>
+                <span class="invalid" style="color:red; font-size:small; display:none">Please enter a valid address.</span>
               </div>
               <div class="button-container">
                 <button type="submit" name="make_pay" class="w-100 btn btn-dark">Make Payment</button>
               </div>
             </form>
-          </div>
+          </div> 
         </div>
       </div>
     </div>
   </div>
+
+    <script>
+    function validate(){
+      let phone=document.getElementById("phone").value;
+      let address=document.getElementById("address").value;
+
+      let invalid=document.getElementsByClassName("invalid");
+      for(i=0;i<2;i++){
+        invalid[i].style.display = 'none';
+      }
+
+      let phoneCheck=/^[0-9]{10}$/;
+      let addressCheck=/^[a-zA-Z0-9\s,.'-]{5,}$/;
+
+      if(!phoneCheck.test(phone)){
+        invalid[0].style.display = 'inline';
+        return false;
+      }
+      else{
+        invalid[0].style.display = 'none';
+      }
+
+      if(!addressCheck.test(address)){
+        invalid[1].style.display = 'inline';
+        return false;
+      }
+      else{
+        invalid[1].style.display = 'none';
+      }
+      return true;
+    }
+  </script>
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: Bootstrap Bundle with Popper -->

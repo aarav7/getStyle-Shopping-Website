@@ -29,31 +29,36 @@
 
                   <h4 class="login-form-title text-left mb-4">Sign Up</h4>
 
-                  <form action="signup_processing.php" method="POST">
+                  <form action="signup_processing.php" method="POST" onsubmit="return validate();">
 
                     <div class="form-outline mb-3">
-                      <label class="form-label" for="form2Example11">Full Name</label>
+                      <label class="form-label" for="fname">Full Name</label>
                       <input type="text" id="fname" class="form-control" name="name" required autofocus>
+                      <span class="invalid" style="color:red; font-size:small; display:none">Please enter a valid full name.</span>
                     </div>
 
                     <div class="form-outline mb-3">
-                      <label class="form-label" for="form2Example22">Email</label>
+                      <label class="form-label" for="email">Email</label>
                       <input type="email" id="email" class="form-control" name="email" required>
+                      <span class="invalid" style="color:red; font-size:small; display:none">Please enter a valid email address.</span>
                     </div>
 
                     <div class="form-outline mb-3">
-                      <label class="form-label" for="form2Example33">Username</label>
+                      <label class="form-label" for="uname">Username</label>
                       <input type="text" id="uname" class="form-control" name="uname" required>
+                      <span class="invalid" style="color:red; font-size:small; display:none">Please enter a valid username.</span>
                     </div>
 
                     <div class="form-outline mb-3">
-                      <label class="form-label" for="form2Example44">Password</label>
+                      <label class="form-label" for="pwd">Password</label>
                       <input type="password" id="pwd" class="form-control" name="pwd" required>
+                      <span class="invalid" style="color:red; font-size:small; display:none">Password must be atleast 8 characters long and must contain atleast one uppercase character, one lowercase character, one numeric value and one special symbol.</span>
                     </div>
 
                     <div class="form-outline mb-3">
-                      <label class="form-label" for="form2Example55">Repeat Password</label>
+                      <label class="form-label" for="pwdrepeat">Repeat Password</label>
                       <input type="password" id="pwdrepeat" class="form-control" name="pwdrepeat" required>
+                      <span class="invalid" style="color:red; font-size:small; display:none">Please enter the same password as entered above.</span>
                     </div>
                     <button class="btn btn-dark btn-block mb-4 d-block ml-auto" style="margin-left:auto" name="submit" type="submit">Sign Up</button>
                     <div class="d-flex align-items-center justify-content-center pb-4">
@@ -108,16 +113,70 @@
     }
     }
   ?>
-  <!-- Optional JavaScript; choose one of the two! -->
 
-  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script>
+    function validate(){
+      let fname=document.getElementById("fname").value;
+      let email=document.getElementById("email").value;
+      let uname=document.getElementById("uname").value;
+      let pwd=document.getElementById("pwd").value;
+      let pwdrepeat=document.getElementById("pwdrepeat").value;
+
+      let invalid=document.getElementsByClassName("invalid");
+      for(i=0;i<5;i++){
+        invalid[i].style.display = 'none';
+      }
+
+      let fnameCheck=/^[A-Za-z. ]{3,30}$/;
+      let emailCheck=/^[A-Za-z0-9_.]{3,}@[A-Za-z]{3,}\.[A-Za-z.]{2,6}$/;
+      let unameCheck=/^[A-Za-z0-9]{3,10}$/;
+      let pwdCheck=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])[A-Za-z0-9!@#\$%\^&\*]{8,}$/;
+
+      if(!fnameCheck.test(fname)){
+        invalid[0].style.display = 'inline';
+        return false;
+      }
+      else{
+        invalid[0].style.display = 'none';
+      }
+
+      if(!emailCheck.test(email)){
+        invalid[1].style.display = 'inline';
+        return false;
+      }
+      else{
+        invalid[1].style.display = 'none';
+      }
+
+      if(!unameCheck.test(uname)){
+        invalid[2].style.display = 'inline';
+        return false;
+      }
+      else{
+        invalid[2].style.display = 'none';
+      }
+
+      if(!pwdCheck.test(pwd)){
+        invalid[3].style.display = 'inline';
+        return false;
+      }
+      else{
+        invalid[3].style.display = 'none';
+      }
+
+      if(pwd!=pwdrepeat){
+        invalid[4].style.display = 'inline';
+        return false;
+      }
+      else{
+        invalid[4].style.display = 'none';
+      }
+      return true;
+    }
+  </script>
+
+  <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>

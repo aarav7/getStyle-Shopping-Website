@@ -33,13 +33,13 @@
                   <form action="login_processing.php" method="POST">
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form2Example11">Username</label>
-                      <input type="text" id="form2Example11" class="form-control" placeholder="Username or email address" name="name" required autofocus />
+                      <label class="form-label" for="name">Username</label>
+                      <input type="text" id="name" class="form-control" placeholder="Username or email address" name="name" required autofocus />
                     </div>
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="form2Example22">Password</label>
-                      <input type="password" id="form2Example22" class="form-control" name="pwd" placeholder="Password" required />
+                      <label class="form-label" for="pwd">Password</label>
+                      <input type="password" id="pwd" class="form-control" name="pwd" placeholder="Password" required />
                     </div>
                     <div class="text-right">
                       <button class="btn btn-dark btn-block mb-4 d-block ml-auto" style="margin-left:auto" name="submit" type="submit">Log in</button>
