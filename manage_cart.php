@@ -1,8 +1,8 @@
 <?php
 session_start();
 date_default_timezone_set("Asia/Kolkata");
-$conn = mysqli_connect("localhost", "root", "", "getStyle");
-if (!$conn) {
+$conn = mysqli_connect("localhost", "root", "", "getstyle");
+if (!$conn) { 
 	die("Connection Failed");
 }
 

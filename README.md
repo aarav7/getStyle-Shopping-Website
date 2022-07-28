@@ -1,0 +1,6 @@
+- Online Shopping Website, named 'getStyle'. Front-end - HTML, CSS, Bootstrap, JavaScript and the Back-end - PHP and MySQL RDBMS.
+- Displays a list of products by fetching the details of the products stored in a table of the website's database.
+- Implemented user sign-up, log-in, log-out and cart management system using sessions and session variables and used prepared statements and sha1() function to ensure safe and protected data insertion and storage.
+- I have also integrated Paytm kit into the website. The website offers two modes of payment - Paytm Payment and Cash on Delivery.
+- The user will get an email assuring him/her that the order has been placed.
+- The database maintains user details, product details, transaction details, record of queries by users and order details in their respective tables.

@@ -3,7 +3,7 @@ session_start();
 $db_host="localhost";
 $db_user="root";
 $db_password="";
-$db_name="getStyle";
+$db_name="getstyle";
 
 $conn= mysqli_connect($db_host, $db_user, $db_password, $db_name);
 if(!$conn)
@@ -24,6 +24,9 @@ $isValidChecksum = "FALSE";
 
 $paramList = $_POST;
 $paytmChecksum = isset($_POST["CHECKSUMHASH"]) ? $_POST["CHECKSUMHASH"] : ""; //Sent by Paytm pg
+print_r($paramList);
+echo PAYTM_MERCHANT_KEY;
+echo $paytmChecksum;
 
 //Verify all parameters received from Paytm pg to your application. Like MID received from paytm pg is same as your application�s MID, TXN_AMOUNT and ORDER_ID are same as what was sent by you to Paytm PG for initiating transaction etc.
 $isValidChecksum = verifychecksum_e($paramList, PAYTM_MERCHANT_KEY, $paytmChecksum); //will return TRUE or FALSE string.

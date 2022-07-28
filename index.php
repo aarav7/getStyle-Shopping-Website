@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "getStyle");
+$conn = mysqli_connect("localhost", "root", "", "getstyle");
 if (!$conn) {
     echo "Connection Failed";
 }
